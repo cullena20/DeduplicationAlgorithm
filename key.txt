@@ -1,0 +1,17 @@
+Heres a document to understand what each file of code does here:
+duplicate_checker - The main algorithm that checks if two posts are duplicates
+    test_duplicate_checker - Tests this algorithm
+    test_process - Tests the processing part of duplicate_checker
+pull_posts - Contains functions for logging in and pulling posts from Twitter, Mastodon and Reddit
+    Uses these functions to pull posts to create an initial dataset of posts.
+    Can add functions here to pull posts with more specifity
+    Creates posts.pickle (used later) and posts1.csv (easily readible)
+non_duplicate_dataset - Creates initial dataset from the posts pulled
+    Creates dataset entirely from posts in posts.pickle and saves them as dataset_nondup.pickle and dataset_nonduplicate.csv
+    All data in this initial dataset are not duplicates, as they are made from randomly shuffling posts pulled
+    ^ This is not a guarantee, so I had to manually check if this worked correctly
+update_dataset_helper - Contains functions to help add data to an already established dataset
+add_data - In this file, posts can be manually added to the dataset
+    All additional adding posts to the dataset should (probably) be done here
+    Takes dataset_nondup.pickle, adds data, and generates complete_dataset.pickle and complete_dataset.csv
+PostClass - Contains the class that all posts are stored in
