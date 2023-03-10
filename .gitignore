@@ -1,11 +1,19 @@
+# miscellaneous
 __pycache__
 .mypy_cache
 .vscode
+
+# personal scratch
 notes
 playground
 scratch.txt
 scratch.py
 play.py
+
+# api and configuration stuff
+config.py
 U3jC-ZkU4n98HpofRvvGSmhEUWskmZ-c69PvRJn381s
+
+# datasets not used
 posts1.csv
 real_dataset.pickle

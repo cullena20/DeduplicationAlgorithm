@@ -3,16 +3,13 @@
 # todo
 # improve way that posts are pulled
 
+import config
 import praw
 import tweepy
 from mastodon import Mastodon
 from PostClass import Post
 import pandas as pd
 import pickle
-
-r_client_id = "etCTL0OgGAY1jA"
-r_client_secret = "vMtYIGE5WVK8BDczKh7ZnRup3rb3ew"
-r_user_agent = "Conscious-Reply-7037"
 
 posts = list()
 
@@ -38,12 +35,6 @@ def pull_reddit(reddit, posts):
             posts.append(sub)
     return posts
 
-t_bearer_token = "AAAAAAAAAAAAAAAAAAAAAHT7lAEAAAAAJCMSxuSwOOZlPpRoSMapdTTQAM8%3DWzjOlhZ3aybgCB5GLU0yK6A6PZI8uuSmlLrFq2WeJ7PhRiG94q"
-t_consumer_key = "tK6DEzcOQWjIRxdx3xPObjC6H"
-t_consumer_secret = "4yrRJYNpoVhLRkAWxheIqlHfRUs5HriRXZBnKyIfhWcWPfNnrW"
-t_access_token = "2696726232-3pLzWACE7F7fI7ble9n6VvXcyPMsjkeW1O4uc96"
-t_access_token_secret = "mN1HmnLj7YIhV1vXrrZ05u9kf1BfnM9wu37Dsm7yi2Z1V"
-
 def log_in_twitter(bearer_token, consumer_key, consumer_secret, access_token, access_token_secret):
     '''
     Returns a twitter Client instance given a user's credentials.
@@ -65,11 +56,6 @@ def pull_twitter(twitter, posts):
         posts.append(sub)
     return posts
     
-m_client_id = 'SOm698kzerQmtD-q_8GPGIUa324CZY6XUUuOfClUMD4'
-m_client_secret = "U3jC-ZkU4n98HpofRvvGSmhEUWskmZ-c69PvRJn381s"
-m_access_token = 'Bq-ntqA-0JV24X7kqu6NnScPNXPm7QT9pVC8mMBemQ0'
-m_api_base_url = "https://mastodonbooks.net"
-
 # run the below once to initialize an app
 # Mastodon.create_app(
 #     client_name = 'playground',
@@ -95,13 +81,13 @@ def pull_mastodon(mastodon, posts):
         posts.append(sub)
     return posts
 
-reddit = log_in_reddit(r_client_id, r_client_secret, r_user_agent)
+reddit = log_in_reddit(config.r_client_id, config.r_client_secret, config.r_user_agent)
 posts = pull_reddit(reddit, posts)
 
-twitter = log_in_twitter(t_bearer_token, t_consumer_key, t_consumer_secret, t_access_token, t_access_token_secret)
+twitter = log_in_twitter(config.t_bearer_token, config.t_consumer_key, config.t_consumer_secret, config.t_access_token, config.t_access_token_secret)
 posts = pull_twitter(twitter, posts)
 
-mastodon = log_in_mastodon(m_client_id, m_client_secret, m_access_token, m_api_base_url)
+mastodon = log_in_mastodon(config.m_client_id, config.m_client_secret, config.m_access_token, config.m_api_base_url)
 posts = pull_mastodon(mastodon, posts)
 
 df = pd.DataFrame([[p.name, p.content, p.author, p.uri, p] for p in posts], columns = ["name1", "content1", "author1", "uri1", "Object1"])
