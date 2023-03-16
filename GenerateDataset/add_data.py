@@ -1,7 +1,7 @@
 import pickle
 from update_dataset_helper import modify_post, add_data
 
-with open('dataset_nondup.pickle', 'rb') as file:
+with open('/Users/cullen/Desktop/Gobo/Datasets/dataset_nondup.pickle', 'rb') as file:
     df = pickle.load(file) 
 
 # rules for reference
@@ -68,7 +68,7 @@ print(df.iloc[len(df.index)-1])
 add_data(df, 37, modify_post(df["Object1"][37], "Do you ever see faces in things? That's a phenomenon called pareidolia, and it's when our brains see familiar shapes in objects or data, like in the cloud clouds or the cosmos. Here are some of our favorite examples of pareidolia in space"), False)
 print(df.iloc[len(df.index)-1])
 
-with open('complete_dataset.pickle', 'wb') as file:
+with open('/Users/cullen/Desktop/Gobo/Datasets/complete_dataset.pickle', 'wb') as file:
     pickle.dump(df, file)
 
-df.to_csv('complete_dataset.csv')
+df.to_csv('/Users/cullen/Desktop/Gobo/Datasets/complete_dataset.csv')

@@ -1,6 +1,9 @@
 # generate duplicates and add to dataframe
 # write functions to generate different kinds of duplicates
 
+import os
+import sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from PostClass import Post
 
 def modify_post(post: Post, content: str):

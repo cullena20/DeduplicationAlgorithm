@@ -1,4 +1,7 @@
 import unittest
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from duplicate_checker import process, extract_links, remove_links, extract_retweet, remove_retweet
 # not testing html_2_text and remove_whitespace because they are already well tested
 

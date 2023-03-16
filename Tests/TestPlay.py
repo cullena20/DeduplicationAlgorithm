@@ -2,14 +2,17 @@
 
 import pickle
 import pandas as pd
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from duplicate_checker import is_duplicate
 from duplicate_checker import is_duplicate_dict
 from duplicate_checker import process
 
-with open("dataset_nondup.pickle", "rb") as file:
+with open("/Users/cullen/Desktop/Gobo/Datasets/dataset_nondup.pickle", "rb") as file:
  df = pickle.load(file)
 
-with open("dup_dataset.pickle", "rb") as file:
+with open("/Users/cullen/Desktop/Gobo/Datasets/dup_dataset.pickle", "rb") as file:
  df2 = pickle.load(file)
 
 def check_duplicates(df: pd.DataFrame) -> list[bool]:

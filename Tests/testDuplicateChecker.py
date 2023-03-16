@@ -1,9 +1,12 @@
 import unittest
-from PostClass import Post
-from duplicate_checker import identical_content, similar_content, similar_names, identical_cross, similar_cross, same_author_content, same_media, is_duplicate
 import pickle
+import os
+import sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from duplicate_checker import identical_content, similar_content, similar_names, identical_cross, similar_cross, same_author_content, same_media, is_duplicate
+from PostClass import Post
 
-with open("complete_dataset.pickle", "rb") as file:
+with open("/Users/cullen/Desktop/Gobo/Datasets/complete_dataset.pickle", "rb") as file:
  df = pickle.load(file)
 
 class TestDuplicateChecker(unittest.TestCase):
